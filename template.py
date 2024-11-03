@@ -14,7 +14,11 @@ list_of_files = [
     "requirements.txt",
     "setup.py",
     "reserach/trials.ipynb",
-    "app.py"
+    "app.py",
+    # "statics/delete_it.py",
+    "static/docs/delete_it.py",
+    "static/output/delete_it.py"
+    # "output/delete_it.py"
 ]
 
 for filepath in list_of_files:
@@ -30,3 +34,11 @@ for filepath in list_of_files:
             logging.info(f"Creating empty file: {filepath}")
     else:
         logging.info(f"File {filename} already exists.")
+
+# Removing delete_it files if they exist
+for filepath in list_of_files:
+    filepath = Path(filepath)
+    filedir, filename = os.path.split(filepath)
+    if ("delete_it" in str(filepath)):
+        print("delete_it file")
+        os.remove(filepath)
